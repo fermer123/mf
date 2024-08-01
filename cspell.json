@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "import": ["@cspell/dict-ru_ru/cspell-ext.json"],
+  "ignoreRegExpList": ["CStyleComment"],
+  "version": "0.2",
+  "ignorePaths": ["node_modules"],
+  "dictionaries": ["english", "russian", "code"],
+  "cache": {
+    "useCache": true,
+    "cacheFormat": "universal",
+    "cacheLocation": ".cspellcache",
+    "cacheStrategy": "metadata"
+  },
+  "dictionaryDefinitions": [
+    {
+      "name": "english",
+      "path": "dictionaries/english.txt"
+    },
+    {
+      "name": "english",
+      "path": "dictionaries/russian.txt"
+    },
+    {
+      "name": "code",
+      "path": "dictionaries/code.txt"
+    }
+  ],
+  "caseSensitive": false,
+  "language": "ru,en"
+}

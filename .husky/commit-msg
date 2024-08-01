@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+BRANCH_NAME="$( git rev-parse --abbrev-ref HEAD )"
+PREFIX="$( echo $BRANCH_NAME | grep -Eoi 'cw-[[:digit:]]+' )"
+
+if [ -z "${PREFIX}" ]; then
+    exit
+fi
+
+# add prefix to commit message
+sed -i "1s/^\($PREFIX: \)\?/$PREFIX: /" "$1"

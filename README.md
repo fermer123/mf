@@ -1,0 +1,6 @@
+- app
+- pages
+- widgets
+- features
+- entities
+- shared
