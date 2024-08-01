@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import {FC, useCallback, useState} from 'react';
 import {v4 as uuidv4} from 'uuid';
 
@@ -27,7 +26,7 @@ const Home: FC = () => {
   return (
     <HomeContainer>
       {isLoading && <LoadingSpinner />}
-      <ul>{wordsData?.map(({id, value}) => <li key={id}>{value}</li>)}</ul>
+      <ul>{wordsData?.map(({value}) => <li key={uuidv4()}>{value}</li>)}</ul>
       <input value={newWord} onChange={(e) => setNewWord(e.target.value)} />
       <button
         type='button'

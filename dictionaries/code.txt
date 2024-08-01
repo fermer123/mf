@@ -1,3 +1,9 @@
 reduxjs
 uuidv4
 hookform
+Parens
+clickaway
+data-testid
+toolkit
+reducers
+reducer

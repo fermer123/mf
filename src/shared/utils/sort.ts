@@ -1,8 +1,8 @@
 import {isNumberArray, isStringArray} from '@app/types';
 
-type TSortDirrection = 'asc' | 'desc';
+type TSortDirection = 'asc' | 'desc';
 
-export const sort = <T>(arr: T[], direction: TSortDirrection = 'asc'): T[] => {
+export const sort = <T>(arr: T[], direction: TSortDirection = 'asc'): T[] => {
   const sortedArr = [...arr];
   if (isNumberArray(arr)) {
     if (direction === 'asc') {

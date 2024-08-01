@@ -6,6 +6,5 @@ export const useAuth = () => {
   const user =
     useAppSelector((state) => state.auth.token) ||
     localStorage.getItem('access');
-
   return useMemo(() => ({user}), [user]);
 };

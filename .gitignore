@@ -8,3 +8,5 @@ __snapshots__/
 dist/
 #tests
 coverage/
+#cspell
+.cspellcache
