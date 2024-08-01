@@ -83,7 +83,8 @@
     "import/no-anonymous-default-export": [
       "error",
       {
-        "allowAnonymousFunction": true
+        "allowAnonymousFunction": true,
+        "allowArrowFunction": true
       }
     ],
 

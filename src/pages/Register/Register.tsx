@@ -8,11 +8,9 @@ import InputForm from '@features/InputForm/InputForm';
 import NavigateLabel from '@features/NavigateLabel/NavigateLabel';
 import PostButton from '@features/PostButton/PostButton';
 import {zodResolver} from '@hookform/resolvers/zod';
-import useAppDispatch from '@shared/hooks/redux/useAppDispatch';
 import {defaultAuthValues, validationAuthSchema} from '@src/shared/constants';
+// eslint-disable-next-line import/no-cycle
 import {useRegisterMutation} from '@store/api/authApi/authApi';
-import {IAuthDataResponse} from '@store/api/types/types';
-import {setCredentials} from '@store/slice/authSlice';
 
 import {Auth, ErrorAlert} from './Register.styled';
 
@@ -24,7 +22,6 @@ const Register: FC = () => {
   const [register, {isError}] = useRegisterMutation();
   const [open, setOpen] = useState<boolean>(false);
   const push = useNavigate();
-  const dispatch = useAppDispatch();
 
   const {
     control,
@@ -46,13 +43,12 @@ const Register: FC = () => {
           id: uuidv4(),
         });
         reset();
-
         push('/');
       } catch (error) {
         setOpen(true);
       }
     },
-    [dispatch, push, register, reset],
+    [push, register, reset],
   );
 
   const switchAuthForm = useCallback(() => {

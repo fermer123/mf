@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import {lazy} from 'react';
 import {RouteProps} from 'react-router-dom';
 

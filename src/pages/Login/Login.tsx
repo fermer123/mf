@@ -10,6 +10,7 @@ import PostButton from '@features/PostButton/PostButton';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {defaultAuthValues, validationAuthSchema} from '@shared/constants';
 import SnackbarComponent from '@src/features/Snackbar/SnackbarComponent';
+// eslint-disable-next-line import/no-cycle
 import {useLoginMutation} from '@store/api/authApi/authApi';
 
 import {Auth, ErrorAlert} from './Login.styled';
@@ -29,7 +30,7 @@ const Login: FC = () => {
     defaultValues: defaultAuthValues,
     resolver: zodResolver(validationAuthSchema),
   });
-  // попробовать использовать динамический префетч (Dynamic Prefetch)
+
   const onSubmit = useCallback(
     async (data: z.infer<typeof validationAuthSchema>): Promise<void> => {
       try {
