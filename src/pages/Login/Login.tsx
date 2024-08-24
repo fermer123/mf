@@ -7,9 +7,9 @@ import {z} from 'zod';
 import InputForm from '@features/InputForm/InputForm';
 import NavigateLabel from '@features/NavigateLabel/NavigateLabel';
 import PostButton from '@features/PostButton/PostButton';
+import SnackbarComponent from '@features/Snackbar/SnackbarComponent';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {defaultAuthValues, validationAuthSchema} from '@shared/constants';
-import SnackbarComponent from '@src/features/Snackbar/SnackbarComponent';
 // eslint-disable-next-line import/no-cycle
 import {useLoginMutation} from '@store/api/authApi/authApi';
 

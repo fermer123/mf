@@ -16,6 +16,7 @@ const AppRouter: FC = () => {
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <Header />
+
       <ContentContainer>
         <Routes>
           {Object.values(routeConfig).map(({element, path}) => {
