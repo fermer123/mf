@@ -1,10 +1,11 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {createApi} from '@reduxjs/toolkit/query/react';
 
+import {baseQueryWithReAuth} from '../baseQuery';
 import type {IWord} from '../types/types';
 
 export const wordsApi = createApi({
   reducerPath: 'wordsApi',
-  baseQuery: fetchBaseQuery({baseUrl: baseURL}),
+  baseQuery: baseQueryWithReAuth,
   tagTypes: ['words'],
   endpoints: (build) => ({
     getWords: build.query<IWord[], string>({

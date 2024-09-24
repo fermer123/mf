@@ -45,7 +45,7 @@ const Login: FC = () => {
         setOpen(true);
       }
     },
-    [login, reset, push],
+    [login, push, reset],
   );
 
   const switchAuthForm = useCallback(() => {

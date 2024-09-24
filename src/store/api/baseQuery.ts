@@ -12,14 +12,17 @@ import {IAuthDataResponse} from './types/types';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: baseURL,
-  // credentials: 'include', //для куки
+  credentials: 'include',
+  mode: 'cors',
   prepareHeaders: (headers, {getState}) => {
     const {token} = (getState() as RootState).auth;
     if (token) {
-      headers.set('Authorization', token || null);
-      headers.set('accept', 'application/json');
-      headers.set('Content-Type', 'application/json');
+      headers.set('Authorization', `Bearer ${token}`);
     }
+
+    headers.set('accept', 'application/json');
+    headers.set('Content-Type', 'application/json');
+
     return headers;
   },
 });
@@ -30,9 +33,8 @@ export const baseQueryWithReAuth: BaseQueryFn<
 > = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
   if (result.error && result.error.status === 401) {
-    const refreshResult = await baseQuery('login/refresh', api, extraOptions);
+    const refreshResult = await baseQuery('/refresh', api, extraOptions);
     if (refreshResult?.data) {
-      // const user = (api.getState() as RootState).authSlice.access_token;
       api.dispatch(setCredentials(refreshResult.data as IAuthDataResponse));
       result = await baseQuery(args, api, extraOptions);
     } else {
