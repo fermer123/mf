@@ -10,6 +10,7 @@ export default (env: BuildEnv) => {
     template: path.join(__dirname, 'public/index.html'),
     analyzer: path.join(__dirname, 'dist/bundle-analysis.html'),
     tsconfigPath: path.join(__dirname, 'tsconfig.json'),
+    html: path.join(__dirname, 'public/index.html'),
   };
 
   const mode = env.mode || 'development';

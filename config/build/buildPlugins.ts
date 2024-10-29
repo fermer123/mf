@@ -1,7 +1,9 @@
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import webpack, {container, WebpackPluginInstance} from 'webpack';
+import webpack, {WebpackPluginInstance} from 'webpack';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+
+import {ModuleFederationPlugin} from '@module-federation/enhanced/webpack';
 
 import packageJson from '../../package.json';
 
@@ -53,10 +55,15 @@ function buildPlugins({
   };
   return [
     // lerna workspaces
-    new container.ModuleFederationPlugin(federationConfig),
+    new ModuleFederationPlugin(federationConfig),
 
     new HtmlWebpackPlugin({
+      title: 'mf',
       template: paths.template,
+      templateContent: paths.output,
+      publicPath: '/',
+      base: '/',
+      chunks: ['main'],
     }),
     isDev ? new ForkTsCheckerWebpackPlugin() : undefined,
     new webpack.DefinePlugin({

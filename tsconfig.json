@@ -18,6 +18,7 @@
     "resolveJsonModule": true,
     "downlevelIteration": true,
     "paths": {
+      "components/*": ["@nf-types/components/*"],
       "@src/*": ["./src/*"],
       "@store/*": ["./src/store/*"],
       "@styles/*": ["./src/app/styles/*"],
