@@ -18,15 +18,12 @@
     "resolveJsonModule": true,
     "downlevelIteration": true,
     "paths": {
-      "components/*": ["@nf-types/components/*"],
-      "@src/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
       "@store/*": ["./src/store/*"],
       "@styles/*": ["./src/app/styles/*"],
-      "@widgets/*": ["./src/widgets/*"],
-      "@shared/*": ["./src/shared/*"],
       "@pages/*": ["./src/pages/*"],
-      "@entities/*": ["./src/entities/*"],
-      "@features/*": ["./src/features/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@app/*": ["./src/app/*"],
       "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
     },

@@ -2,7 +2,7 @@ import {useMemo} from 'react';
 
 import useAppSelector from './useAppSelector';
 
-export const useAuth = () => {
+export const useAuth = (): {user: string} => {
   // const token = document.cookie
   //   .split('; ')
   //   .find((row) => row.startsWith('accessToken='))

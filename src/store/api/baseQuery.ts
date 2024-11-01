@@ -4,11 +4,10 @@ import {
   fetchBaseQuery,
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
+import {IAuthDataResponse} from '@store/types/auth';
 
 import type {RootState} from '..';
 import {logout, setCredentials} from '../slice/authSlice';
-
-import {IAuthDataResponse} from './types/types';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: baseURL,

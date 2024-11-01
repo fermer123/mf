@@ -4,16 +4,26 @@ import {useNavigate} from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
 import {z} from 'zod';
 
-import InputForm from '@features/InputForm/InputForm';
-import NavigateLabel from '@features/NavigateLabel/NavigateLabel';
-import PostButton from '@features/PostButton/PostButton';
-import SnackbarComponent from '@features/Snackbar/SnackbarComponent';
+import InputForm from '@components/InputForm/InputForm';
+import NavigateLabel from '@components/NavigateLabel/NavigateLabel';
+import PostButton from '@components/PostButton/PostButton';
+import SnackbarComponent from '@components/Snackbar/SnackbarComponent';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {defaultAuthValues, validationAuthSchema} from '@shared/constants';
-// eslint-disable-next-line import/no-cycle
 import {useLoginMutation} from '@store/api/authApi/authApi';
 
 import {Auth, ErrorAlert} from './Login.styled';
+
+export const schema = z.object({
+  password: z
+    .string()
+    .min(3, {message: 'Слишком короткий пароль'})
+    .max(20, {message: 'Слишком длинный пароль'})
+    .nonempty('Поле не должно быть пустым'),
+  email: z
+    .string()
+    .email('Неверный email')
+    .nonempty('Поле не должно быть пустым'),
+});
 
 const Login: FC = () => {
   const push = useNavigate();
@@ -27,12 +37,12 @@ const Login: FC = () => {
     formState: {isSubmitting, isValid},
   } = useForm({
     mode: 'onChange',
-    defaultValues: defaultAuthValues,
-    resolver: zodResolver(validationAuthSchema),
+    defaultValues: {email: '', password: ''},
+    resolver: zodResolver(schema),
   });
 
   const onSubmit = useCallback(
-    async (data: z.infer<typeof validationAuthSchema>): Promise<void> => {
+    async (data: z.infer<typeof schema>): Promise<void> => {
       try {
         await login({
           email: data.email,

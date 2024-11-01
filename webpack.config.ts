@@ -8,9 +8,9 @@ export default (env: BuildEnv) => {
     entry: path.join(__dirname, 'src/index.ts'),
     output: path.join(__dirname, 'build'),
     template: path.join(__dirname, 'public/index.html'),
+    favicon: path.join(__dirname, 'public/favicon.ico'),
     analyzer: path.join(__dirname, 'dist/bundle-analysis.html'),
     tsconfigPath: path.join(__dirname, 'tsconfig.json'),
-    html: path.join(__dirname, 'public/index.html'),
   };
 
   const mode = env.mode || 'development';

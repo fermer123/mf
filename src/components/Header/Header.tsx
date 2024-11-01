@@ -1,4 +1,4 @@
-import ThemeToggle from '@features/ThemeToggle/ThemeToggle';
+import ThemeToggle from '@components/ThemeToggle/ThemeToggle';
 
 import {HeaderContainer} from './Header.styled';
 

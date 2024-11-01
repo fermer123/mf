@@ -1,19 +1,18 @@
-// eslint-disable-next-line import/no-cycle
 import {RoutePath} from '@app/routeConfig/routeConfig';
-import {createApi} from '@reduxjs/toolkit/dist/query/react';
-import {setCredentials} from '@src/store/slice/authSlice';
+import {setCredentials} from '@store/slice/authSlice';
+import {IAuthDataRequest, IAuthDataResponse} from '@store/types/auth';
 
 import {baseQueryWithReAuth} from '../baseQuery';
-import type {IAuthDataRequest, IAuthDataResponse} from '../types/types';
+import {createCustomApi} from '..';
 
-export const authApi = createApi({
+export const authApi = createCustomApi({
   reducerPath: 'authApi',
   baseQuery: baseQueryWithReAuth,
-  tagTypes: ['auth'],
+  tagTypes: ['login', 'register'],
   endpoints: (build) => ({
     login: build.mutation<IAuthDataResponse, IAuthDataRequest>({
       query: (body) => ({
-        url: '/login',
+        url: 'login',
         method: 'POST',
         body,
       }),
@@ -26,11 +25,12 @@ export const authApi = createApi({
           window.location.href = RoutePath.login;
         }
       },
+      invalidatesTags: ['login'],
     }),
 
     register: build.mutation<IAuthDataResponse, IAuthDataRequest>({
       query: (body) => ({
-        url: '/register',
+        url: 'register',
         method: 'POST',
         body,
       }),
@@ -43,8 +43,14 @@ export const authApi = createApi({
           window.location.href = RoutePath.register;
         }
       },
+      invalidatesTags: ['register'],
     }),
   }),
 });
 
-export const {useLoginMutation, useRegisterMutation} = authApi;
+export const {
+  // авторизация
+  useLoginMutation,
+  // регистрация
+  useRegisterMutation,
+} = authApi;

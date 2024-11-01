@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
+import useAppSelector from '@hooks/redux/useAppSelector';
 import {createSlice} from '@reduxjs/toolkit';
-import useAppSelector from '@shared/hooks/redux/useAppSelector';
 
 const THEME = 'theme';
 const supportedThemes = {

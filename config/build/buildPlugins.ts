@@ -18,7 +18,7 @@ function buildPlugins({
     name: 'store',
     filename: 'remoteEntry.js',
     remotes: {
-      snackbar: 'snackbar@http://localhost:3002/remoteEntry.js',
+      // snackbar: 'snackbar@http://localhost:3002/remoteEntry.js',
     },
     shared: {
       react: {
@@ -58,12 +58,12 @@ function buildPlugins({
     new ModuleFederationPlugin(federationConfig),
 
     new HtmlWebpackPlugin({
-      title: 'mf',
+      title: 'microFrontend',
       template: paths.template,
-      templateContent: paths.output,
       publicPath: '/',
       base: '/',
       chunks: ['main'],
+      favicon: paths.favicon,
     }),
     isDev ? new ForkTsCheckerWebpackPlugin() : undefined,
     new webpack.DefinePlugin({

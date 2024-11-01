@@ -3,12 +3,12 @@ import {Route, Routes} from 'react-router-dom';
 
 import ProtectedRoute from '@app/ProtectedRoute/ProtectedRoute';
 import {routeConfig} from '@app/routeConfig/routeConfig';
-import LoadingSpinner from '@features/Loading/LoadingSpinner';
-import {useAuth} from '@shared/hooks/redux/useAuth';
+import LoadingSpinner from '@components/Loading/LoadingSpinner';
+import {useAuth} from '@hooks/redux/useAuth';
 
 import {ContentContainer} from '../styles/global';
 
-const Header = lazy(() => import('@widgets/header/Header'));
+const Header = lazy(() => import('@components/Header/Header'));
 
 const AppRouter: FC = () => {
   const {user} = useAuth();
@@ -16,7 +16,6 @@ const AppRouter: FC = () => {
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <Header />
-
       <ContentContainer>
         <Routes>
           {Object.values(routeConfig).map(({element, path}) => {

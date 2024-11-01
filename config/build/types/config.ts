@@ -4,9 +4,9 @@ export interface BuildPaths {
   entry: string;
   output: string;
   template: string;
+  favicon: string;
   analyzer: string;
   tsconfigPath: string;
-  html: string;
 }
 
 export interface BuildEnv {

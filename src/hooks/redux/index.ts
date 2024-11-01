@@ -1,9 +1,9 @@
 import {createContext} from 'react';
+import type {ReactReduxContextValue} from 'react-redux';
 import {
   createDispatchHook,
   createSelectorHook,
   createStoreHook,
-  ReactReduxContextValue,
 } from 'react-redux';
 
 export const context = createContext<ReactReduxContextValue | null>(null);

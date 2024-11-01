@@ -4,12 +4,12 @@ import {BrowserRouter} from 'react-router-dom';
 import AppRouter from '@app/provider/AppRouter';
 import GlobalStyle from '@app/styles/global';
 import Theme from '@app/styles/Theme';
+import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
+import {withProvider} from '@hooks/withProvider/withProvider';
 
-import ErrorBoundary from './features/ErrorBoundary/ErrorBoundary';
-import {withProvider} from './shared/hooks/withProvider/withProvider';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
 const Provider = withProvider();
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <Provider>
     <ErrorBoundary>

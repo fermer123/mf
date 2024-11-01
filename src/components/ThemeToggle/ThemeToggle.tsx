@@ -1,4 +1,4 @@
-import useAppDispatch from '@src/shared/hooks/redux/useAppDispatch';
+import useAppDispatch from '@hooks/redux/useAppDispatch';
 import {setTheme, useTheme} from '@store/slice/themeSlice';
 
 import {ThemeToggleButton} from './ThemeToggle.styled';
